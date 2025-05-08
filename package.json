@@ -1,0 +1,11 @@
+{
+  "name": "nodejs-redis",
+  "version": "1.0.0",
+  "description": "mini project with nodejs and redis and nunjucks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "rasoolabdi",
+  "license": "ISC"
+}
