@@ -1,11 +1,21 @@
 {
   "name": "nodejs-redis",
   "version": "1.0.0",
+  "type": "module",
   "description": "mini project with nodejs and redis and nunjucks",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon -e html,css,js,json,env app.js"
   },
   "author": "rasoolabdi",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "auto-bind": "^5.0.1",
+    "dotenv": "^16.5.0",
+    "dotenv-expand": "^12.0.2",
+    "express": "^5.1.0",
+    "ioredis": "^5.6.1",
+    "nunjucks": "^3.2.4"
+  }
 }
