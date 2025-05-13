@@ -2,6 +2,7 @@ import express from "express";
 import nunjucks from "nunjucks";
 import {config} from "dotenv";
 import mainRouter from "./routes/route.js";
+import {Redis} from "./core/redis.js";
 config();
 
 class Application {
@@ -39,6 +40,12 @@ class Application {
     }
 
     async run() {
+        const redisDB = await Redis.connect(process.env.REDIS_URI);
+        if(!redisDB) {
+            console.log("connot connected to redis");
+            process.exit(-1);
+        }
+
         const PORT = process.env.PORT;
         this.#app.listen(PORT , async () => {
             console.log(`Application is running on port ${PORT}`)
