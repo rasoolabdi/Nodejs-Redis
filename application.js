@@ -45,6 +45,9 @@ class Application {
             console.log("connot connected to redis");
             process.exit(-1);
         }
+        else {
+            console.log("Connected to Redis DataBase")
+        }
 
         const PORT = process.env.PORT;
         this.#app.listen(PORT , async () => {
