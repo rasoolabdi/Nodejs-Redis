@@ -3,6 +3,7 @@ import nunjucks from "nunjucks";
 import {config} from "dotenv";
 import mainRouter from "./routes/route.js";
 import {Redis} from "./core/redis.js";
+import translate from "./core/translate.js";
 config();
 
 class Application {
@@ -33,6 +34,8 @@ class Application {
         });
         this.#templateEngine.addGlobal("APP_URL" , process.env.APP_URL);
         this.#templateEngine.addGlobal("TEMPLATE_NAME" , process.env.TEMPLATE + "/");
+
+        this.#templateEngine.addGlobal("t" , translate.t);
     }
 
     async #initRoute() {
