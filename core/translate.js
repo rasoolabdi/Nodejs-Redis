@@ -1,4 +1,6 @@
 import i18next from "i18next";
+import fa from "../langs/fa/fa.js";
+import en from "../langs/en/en.js";
 
 
 class Translate {
