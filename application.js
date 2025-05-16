@@ -3,6 +3,7 @@ import nunjucks from "nunjucks";
 import {config} from "dotenv";
 import mainRouter from "./routes/route.js";
 import {Redis} from "./core/redis.js";
+import * as templateHelper from "./core/TemplateHelper.js";
 import translate from "./core/translate.js";
 config();
 
@@ -36,6 +37,8 @@ class Application {
         this.#templateEngine.addGlobal("TEMPLATE_NAME" , process.env.TEMPLATE + "/");
 
         this.#templateEngine.addGlobal("t" , translate.t);
+        this.#templateEngine.addExtension('alertDangerExtension' , new templateHelper.alertDangerExtension());
+        this.#templateEngine.addExtension('alertSuccessExtension' , new templateHelper.alertSuccessExtension());
     }
 
     async #initRoute() {
