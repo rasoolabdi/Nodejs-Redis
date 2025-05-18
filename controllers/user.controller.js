@@ -39,6 +39,34 @@ class UserController extends BaseController {
         }
     }
 
+    async #loginValidation(req) {
+        await body("email").not().isEmpty().withMessage("err1").isEmail().withMessage("err2").run(req);
+        await body("password").not().isEmpty().withMessage("err3").run(req);
+        return validationResult(req);
+    }
+
+    async postLogin(req , res , next) {
+        try {
+            const result = await this.#loginValidation(req);
+            if(!result.isEmpty()) {
+                return res.redirect(`/login?msg=${result?.errors[0]?.msg}`);
+            }
+            const email = super.input(req.body.email);
+            const password = super.input(req.body.password);
+            const hashEmail = crypto.hash(email);
+            const user = await Redis.get(`register_${hashEmail}`);
+            if(user?.id && user.password === password) {
+                return res.redirect(`/profile?msg=login-success`)
+            }
+            else {
+                return res.redirect(`/login?msg=login-error`)
+            }
+        }
+        catch(e) {
+            next(e);
+        }
+    }
+
     async register(req , res , next) {
         try {
             const data = {

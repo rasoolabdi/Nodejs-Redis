@@ -10,8 +10,24 @@
         <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
             <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
                 <h2 class="card-title fw-bold mb-2">{{ title }}</h2>
-                <p class="card-text mb-2"></p>
-                <form class="auth-login-form mt-2" action="index.html" method="POST">
+                <p class="card-text mb-2">
+                    {% AlertDanger "err1" %} 
+                        {{ t("user.login_not_empty_email") }}
+                    {% endAlertDanger %}
+                    {% AlertDanger "err2" %} 
+                        {{ t("user.login_valid_email") }}
+                    {% endAlertDanger %}
+                    {% AlertDanger "err3" %} 
+                        {{ t("user.login_not_empty_password")}}
+                    {% endAlertDanger %}
+                    {% AlertDanger "login-error" %} 
+                        {{ t("user.login_error") }}
+                    {% endAlertDanger %}
+                    {% AlertSuccess "login-success" %}
+                        {{ t("user.login_success")}}
+                    {% endAlertSuccess %}
+                </p>
+                <form class="auth-login-form mt-2" action="" method="POST">
                     <div class="mb-1">
                         <label class="form-label" for="email">ایمیل</label>
                         <input class="form-control" id="email" type="text" name="email" autocomplete="off" placeholder="test@example.com" aria-describedby="email" autofocus="" tabindex="1" />
