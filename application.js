@@ -1,10 +1,10 @@
 import express from "express";
 import nunjucks from "nunjucks";
-import {config} from "dotenv";
 import mainRouter from "./routes/route.js";
+import translate from "./core/translate.js";
 import {Redis} from "./core/redis.js";
 import * as templateHelper from "./core/TemplateHelper.js";
-import translate from "./core/translate.js";
+import {config} from "dotenv";
 config();
 
 class Application {
@@ -15,15 +15,23 @@ class Application {
     constructor() {
         this.#initExpress();
         this.#initRoute();
-        this.#app.use(express.static("assets"));
-        this.#app.use(express.static("media"));
-        this.#app.use(express.urlencoded({urlencoded: true}));
-        this.#app.use(express.json());
-        this.#initTemplateEngine();
     }
 
     async #initExpress() {
         this.#app = express();
+        this.#app.use(express.static("assets"));
+        this.#app.use(express.urlencoded({urlencoded: true}));
+        this.#app.use(express.json());
+        this.#app.use(async (req , res , next) => {
+            try {
+                this.#app.set("req" , req);
+                next();
+            }
+            catch(error) {
+                next(error);
+            }
+        })
+        this.#initTemplateEngine();
     }
 
     async #initTemplateEngine() {
@@ -33,10 +41,11 @@ class Application {
             express: this.#app,
             noCache: false
         });
+        this.#app.set('view engine' , 'html');
+        this.#templateEngine.addGlobal("t" , translate.t);
         this.#templateEngine.addGlobal("APP_URL" , process.env.APP_URL);
         this.#templateEngine.addGlobal("TEMPLATE_NAME" , process.env.TEMPLATE + "/");
 
-        this.#templateEngine.addGlobal("t" , translate.t);
         this.#templateEngine.addExtension('alertDangerExtension' , new templateHelper.alertDangerExtension());
         this.#templateEngine.addExtension('alertSuccessExtension' , new templateHelper.alertSuccessExtension());
     }

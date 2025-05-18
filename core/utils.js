@@ -31,7 +31,7 @@ export function isJSON(str) {
 
 export function stringify(obj) {
     try {
-        return JSON,stringify(obj);
+        return JSON.stringify(obj);
     }
     catch(error) {
         return '';

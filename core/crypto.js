@@ -1,5 +1,6 @@
 import crypto from "crypto";
-
+import { config } from "dotenv";
+config();
 
 class Crypto {
     #secretKey = '';
@@ -10,10 +11,10 @@ class Crypto {
 
     hash(str) {
         try {
-            return crypto.createHmac("sha256" , this.#secretKey).update(str.toString()).digest("hex");
+            return crypto.createHmac('sha256',this.#secretKey).update(str.toString()).digest("hex");
         }
         catch(error) {
-            return error;
+            return '';
         }
     };
 
@@ -26,9 +27,9 @@ class Crypto {
         }
     };
 
-    fromjBase64(str) {
+    fromBase64(str) {
         try {
-            return Buffer.from(str.toString() , "base64url").toString("utf-8");
+            return Buffer.from(str.toString() , "base64url").toString("utf8");
         }
         catch(error) {
             return error;

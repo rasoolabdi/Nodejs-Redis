@@ -23,7 +23,7 @@ class Redis {
 
     async set(key , data={} , ex = 0) {
         try {
-            data= (typeof data === "string") ? data : stringify(data);
+            data = (typeof data === "string") ? data : stringify(data);
             ex = toNumber(ex) > 0 ? ex : 0;
             if(ex > 0) {
                 await this.#redis.set(key , data , "Expire" , ex);
@@ -47,7 +47,7 @@ class Redis {
                 return '';
             }
         }
-        catch(error) {
+        catch(e) {
             return '';
         }
     };

@@ -1,4 +1,3 @@
-
 import nunjucks from "nunjucks";
 
 export function alertDangerExtension() {
@@ -44,7 +43,7 @@ export function alertSuccessExtension() {
             const msg = context?.ctx?.settings?.req?.query?.msg ?? '';
             if(msg === key) {
                 const html = `
-                    <div class="text-center alert alert-danger">${body()}</div>
+                    <div class="text-center alert alert-success">${body()}</div>
                 `;
                 return nunjucks.runtime.markSafe(html);
             }

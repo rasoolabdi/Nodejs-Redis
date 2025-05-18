@@ -1,6 +1,6 @@
 import i18next from "i18next";
-import fa from "../langs/fa/fa.js";
-import en from "../langs/en/en.js";
+import fa from "./../langs/fa/fa.js";
+import en from "./../langs/en/en.js";
 
 
 class Translate {
@@ -15,15 +15,15 @@ class Translate {
                 }
             }
         });
-        i18next.changeLanguage(process.env.APP_URL) ;
+        i18next.changeLanguage(process.env.APP_LANG) ;
     };
 
     changeLanguage(lang) {
         i18next.changeLanguage(lang);
     };
 
-    t(key , data={}) {
-        return i18next.t(key , data);
+    t(key,data={}) {
+        return i18next.t(key ,data);
     }
 
 };

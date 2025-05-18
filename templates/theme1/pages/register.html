@@ -10,22 +10,48 @@
         <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
             <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
                 <h2 class="card-title fw-bold mb-2">{{ title }}</h2>
-                <p class="card-text mb-2"></p>
+                <p class="card-text mb-2">
+                    {% AlertDanger "err1" %}
+                        {{ t('user.register_email_not_empty') }}
+                    {% endAlertDanger %}
+                    {% AlertDanger "err2" %}
+                        {{ t('user.register_valid_email')}}
+                    {% endAlertDanger %}
+                    {% AlertDanger "err3" %}
+                        {{ t("user.register_password") }}
+                    {% endAlertDanger %}
+                    {% AlertDanger "err4" %} 
+                        {{ t("user.register_dup_password")}}
+                    {% endAlertDanger %}
+                    {% AlertDanger "err5" %} 
+                        {{ t("user.register_not_equal_password") }}
+                    {% endAlertDanger %}
+                    {% AlertDanger "already-email" %}
+                        {{ t("user.register_already_email") }}
+                    {% endAlertDanger %}
+                    {% AlertSuccess "register-success" %}
+                        {{ t("user.register_success") }}
+                    {% endAlertSuccess %}
+                </p>
                 <form class="auth-login-form mt-2" action="" method="POST">
                     <div class="mb-1">
-                        <label class="form-label" for="username">نام کاربری</label>
-                        <input class="form-control" id="username" type="text" name="username" autocomplete="off" placeholder="rasool abdi" aria-describedby="email" autofocus="" tabindex="1" />
-                    </div>
-                    <div class="mb-1">
                         <label class="form-label" for="email">ایمیل</label>
-                        <input class="form-control" id="email" type="text" name="email" autocomplete="off" placeholder="test@example.com" aria-describedby="email" autofocus="" tabindex="1" />
+                        <input class="form-control" id="email" type="text" name="email" autocomplete="off" placeholder="text@yahoo.com" aria-describedby="email" autofocus="" tabindex="1" />
                     </div>
                     <div class="mb-1">
                         <div class="d-flex justify-content-between">
-                            <label class="form-label" for="password">پسورد</label>
+                            <label class="form-label" for="password1">کلمه عبور</label>
                         </div>
                         <div class="input-group input-group-merge form-password-toggle">
-                            <input class="form-control form-control-merge" id="password" type="password" name="password" placeholder="············" aria-describedby="password" tabindex="2" /><span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
+                            <input class="form-control form-control-merge" id="password1" type="password" name="password1" placeholder="············" aria-describedby="password" tabindex="2" /><span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
+                        </div>
+                    </div>
+                    <div class="mb-1">
+                        <div class="d-flex justify-content-between">
+                            <label class="form-label" for="password2">تکرار کلمه عبور</label>
+                        </div>
+                        <div class="input-group input-group-merge form-password-toggle">
+                            <input class="form-control form-control-merge" id="password2" type="password" name="password2" placeholder="············" aria-describedby="password" tabindex="2" /><span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
                         </div>
                     </div>
                     <button class="btn btn-primary w-100" tabindex="4">ثبت نام</button>

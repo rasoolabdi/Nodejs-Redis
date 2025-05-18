@@ -7,5 +7,25 @@ class BaseController {
         }
         autoBind(this);
     }
+
+    input(field) {
+        try {
+            if(!Array.isArray(field)) {
+                if(typeof field === 'string') {
+                    return field.trim();
+                }
+                else {
+                    return '';
+                }
+            }
+            else {
+                return '';
+            }
+        }
+        catch(e) {
+            return '';
+        }
+    };
+
 };
 export default  BaseController;
