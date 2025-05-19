@@ -2,6 +2,7 @@ import { body, validationResult } from "express-validator";
 import BaseController from "./base.controller.js";
 import crypto from "../core/crypto.js";
 import { Redis } from "../core/redis.js";
+import { random } from "../core/utils.js";
 
 
 class UserController extends BaseController {
@@ -128,6 +129,47 @@ class UserController extends BaseController {
         }
         catch(error) {
             next(error);
+        }
+    }
+
+    async #recoveryValidation(req) {
+        await body("email").not().isEmpty().withMessage("err1").isEmail().withMessage("err2").run(req);
+        return validationResult(req);
+    }
+
+    async postRecovery(req , res , next) {
+        try {
+            const result = await this.#recoveryValidation(req);
+            if(!result.isEmpty()) {
+                return res.redirect(`/recovery?msg=${result?.errors[0]?.msg}`);
+            }
+
+            const email = super.input(req.body.email);
+            const hashEmail = crypto.hash(email);
+            const user = await Redis.get(`register_${hashEmail}`);
+            if(user?.id) {
+                const resetKey = await Redis.get(`reset_${hashEmail}`);
+                if(resetKey === "") {
+                    const token = crypto.hash(email + random(1000000000,9999999999) + random(1000000000,9999999999) );
+                    const data = {
+                        id: hashEmail,
+                        email,
+                        token
+                    };
+                    await Redis.set(`reset_${hashEmail}` , data , 120);
+                    return res.redirect("/recovery?msg=ok")
+                }
+                else {
+                    return res.redirect("/recovery?msg=reset-wait")
+                }
+            }
+            else {
+                return res.redirect("/recovery?msg=email-error")
+            }
+        }
+        catch(error) {
+            console.log(error)
+            next(error)
         }
     }
 

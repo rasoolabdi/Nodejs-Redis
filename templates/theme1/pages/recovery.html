@@ -10,7 +10,23 @@
         <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
             <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
                 <h2 class="card-title fw-bold mb-2">{{ title }}</h2>
-                <p class="card-text mb-2"></p>
+                <p class="card-text mb-2">
+                    {% AlertDanger "err1" %}
+                        {{ t("user.recovery_email_not_empty") }}
+                    {% endAlertDanger %}
+                    {% AlertDanger "err2" %}
+                        {{ t("user.recovery_email_is_valid") }}
+                    {% endAlertDanger %}
+                    {% AlertDanger "reset-wait" %}
+                        {{ t("user.recovery_try_two_minute") }}
+                    {% endAlertDanger %}
+                    {% AlertDanger "email-error" %}
+                        {{ t("user.recovery_email_is_invalid") }}
+                    {% endAlertDanger %}
+                    {% AlertSuccess "ok" %}
+                        {{ t("user.recovery_reset_password") }}
+                    {% endAlertSuccess %}
+                </p>    
                 <form class="auth-login-form mt-2" action="" method="POST">
                     <div class="mb-1">
                         <label class="form-label" for="email">ایمیل</label>

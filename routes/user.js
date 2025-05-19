@@ -10,5 +10,6 @@ userRouters.post("/login" , userController.postLogin);
 userRouters.get("/register" , userController.register);
 userRouters.post("/register" , userController.postRegister);
 userRouters.get("/recovery" , userController.recovery);
+userRouters.post("/recovery" , userController.postRecovery);
 
 export default userRouters;
