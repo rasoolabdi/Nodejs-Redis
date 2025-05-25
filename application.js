@@ -5,6 +5,7 @@ import translate from "./core/translate.js";
 import {Redis} from "./core/redis.js";
 import * as templateHelper from "./core/TemplateHelper.js";
 import {config} from "dotenv";
+import SessionMiddleware from "./middlewares/session.js";
 config();
 
 class Application {
@@ -22,6 +23,7 @@ class Application {
         this.#app.use(express.static("assets"));
         this.#app.use(express.urlencoded({urlencoded: true}));
         this.#app.use(express.json());
+        this.#app.use(new SessionMiddleware().handle);
         this.#app.use(async (req , res , next) => {
             try {
                 this.#app.set("req" , req);

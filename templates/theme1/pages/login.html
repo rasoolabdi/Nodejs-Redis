@@ -23,6 +23,9 @@
                     {% AlertDanger "login-error" %} 
                         {{ t("user.login_error") }}
                     {% endAlertDanger %}
+                    {% AlertDanger "no-access" %} 
+                        {{ t('user.login_no_access')}}
+                    {% endAlertDanger %}
                     {% AlertSuccess "login-success" %}
                         {{ t("user.login_success")}}
                     {% endAlertSuccess %}

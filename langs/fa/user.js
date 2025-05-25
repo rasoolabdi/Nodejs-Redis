@@ -6,6 +6,7 @@ export default {
     "login_not_empty_password": "لطفا کلمه عبور را وارد نمایید",
     "login_error": "ایمیل یا کلمه عبور صحیح نمی باشد",
     "login_success": "ورود با موفقیت انجام شد",
+    "login_no_access": "برای دسترسی به پروفایل ابتدا باید لاگین کنید",
 
     //register
     "register_email_not_empty": "لطفا ایمیل را وارد نمایید",
@@ -22,5 +23,4 @@ export default {
     "recovery_try_two_minute": "لطفا دو دقیقه بعد مجددا درخواست را ارسال نمایید",
     "recovery_email_is_invalid": "ایمیل وارد شده صحیح نمی باشد",
     "recovery_reset_password": "توکن برای تغییر پسورد شما به ایمیل تان ارسال شد",
-
 }

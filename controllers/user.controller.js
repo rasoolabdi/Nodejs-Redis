@@ -57,6 +57,8 @@ class UserController extends BaseController {
             const hashEmail = crypto.hash(email);
             const user = await Redis.get(`register_${hashEmail}`);
             if(user?.id && user.password === password) {
+                req.session.admin_id = user?.id;
+                req.session.admin_info = user;
                 return res.redirect(`/profile?msg=login-success`)
             }
             else {
