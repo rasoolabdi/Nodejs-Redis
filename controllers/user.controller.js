@@ -83,9 +83,12 @@ class UserController extends BaseController {
     };
 
     async #registerValidation(req) {
-        await body("email").not().isEmpty().withMessage("err1").isEmail().withMessage("err2").run(req);
-        await body("password1").not().isEmpty().withMessage("err3").run(req);
-        await body("password2").not().isEmpty().withMessage("err4").run(req);
+        await body("first_name").not().isEmpty().withMessage("err1").isLength({max: 30}).withMessage("err2").run(req);
+        await body("last_name").not().isEmpty().withMessage("err3").isLength({max: 30}).withMessage("err4").run(req);
+        await body("username").not().isEmpty().withMessage("err6").isLength({min: 3}).withMessage("err7").run(req);
+        await body("email").not().isEmpty().withMessage("err8").isEmail().withMessage("err9").run(req);
+        await body("password1").not().isEmpty().withMessage("err10").isLength({min: 8}).withMessage("err11").run(req);
+        await body("password2").not().isEmpty().withMessage("err12").isLength({min: 8}).withMessage("err13").run(req);
         return  validationResult(req);
     };
 
@@ -95,6 +98,9 @@ class UserController extends BaseController {
             if(!result.isEmpty()) {
                 return res.redirect(`/register?msg=${result?.errors[0]?.msg}`)
             }
+            const firstName = super.input(req.body.first_name);
+            const lastName = super.input(req.body.lastName);
+            const userName = super.input(req.body.username);
             const email = super.input(req.body.email);
             const password1 = super.input(req.body.password1);
             const password2 = super.input(req.body.password2);
@@ -107,6 +113,9 @@ class UserController extends BaseController {
             if(alreadyEmail === "") {
                 const data = {
                     id: hashEmail,
+                    firstName,
+                    lastName,
+                    userName,
                     email,
                     password: password2
                 };

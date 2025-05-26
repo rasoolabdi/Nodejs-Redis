@@ -9,9 +9,17 @@ export default {
     "login_no_access": "برای دسترسی به پروفایل ابتدا باید لاگین کنید",
 
     //register
+    "register_first_name_not_empty": "لطفا نام را وارد نمایید",
+    "register_is_length_max_firstname": "نام حداکثر 30 کاراکتر میتواند باشد",
+    "register_last_name_not_empty": "لطفا نام خانوادگی را وارد نمایید",
+    "register_is_length_max_lastName": "نام خانوادگی حداکثر 30 کاراکتر میتواند باشد",
+    "register_username_not_empty": "لطفا نام کاربری را وارد نمایید",
+    "register_is_length_username": "نام کاربری حداقل 3 کاراکتر باید باشد",
+    "register_is_length_min_password": "کلمه عبور حداقل 8 کاراکتر باید باشد",
+    "register_is_length_min_rep_password": "تکرار کلمه عبور حداقل 8 کاراکتر باید باشد",
     "register_email_not_empty": "لطفا ایمیل را وارد نمایید",
     "register_valid_email": "لطفا ایمیل معتبر وارد نمایید",
-    "register_password": "لطفا پسورد را وارد نمایید",
+    "register_password": "لطفا کلمه عبور را وارد نمایید",
     "register_dup_password": "لطفا تکرار کلمه عبور را وارد نمایید",
     "register_not_equal_password": "کلمه عبور با تکرار کلمه عبور یکسان نمی باشد",
     "register_already_email": "ایمیل مورد نظر موجود می باشد",

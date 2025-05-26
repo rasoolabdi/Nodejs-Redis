@@ -12,16 +12,40 @@
                 <h2 class="card-title fw-bold mb-2">{{ title }}</h2>
                 <p class="card-text mb-2">
                     {% AlertDanger "err1" %}
-                        {{ t('user.register_email_not_empty') }}
+                        {{ t("user.register_first_name_not_empty")}}
                     {% endAlertDanger %}
                     {% AlertDanger "err2" %}
-                        {{ t('user.register_valid_email')}}
+                        {{ t("user.register_is_length_max_firstname")}}
                     {% endAlertDanger %}
                     {% AlertDanger "err3" %}
+                        {{ t("user.register_last_name_not_empty")}}
+                    {% endAlertDanger %}
+                    {% AlertDanger "err4" %}
+                        {{ t("user.register_is_length_max_lastName")}}
+                    {% endAlertDanger %}
+                    {% AlertDanger "err6" %}
+                        {{ t("user.register_username_not_empty")}}
+                    {% endAlertDanger %}
+                    {% AlertDanger "err7" %}
+                        {{ t("user.register_is_length_username")}}
+                    {% endAlertDanger %}
+                    {% AlertDanger "err8" %}
+                        {{ t('user.register_email_not_empty') }}
+                    {% endAlertDanger %}
+                    {% AlertDanger "err9" %}
+                        {{ t('user.register_valid_email')}}
+                    {% endAlertDanger %}
+                    {% AlertDanger "err10" %}
                         {{ t("user.register_password") }}
                     {% endAlertDanger %}
-                    {% AlertDanger "err4" %} 
+                    {% AlertDanger "err11" %}
+                        {{ t("user.register_is_length_min_password")}}
+                    {% endAlertDanger %}
+                    {% AlertDanger "err12" %} 
                         {{ t("user.register_dup_password")}}
+                    {% endAlertDanger %}
+                    {% AlertDanger "err13" %}
+                        {{ t("user.register_is_length_min_rep_password")}}
                     {% endAlertDanger %}
                     {% AlertDanger "err5" %} 
                         {{ t("user.register_not_equal_password") }}
@@ -35,8 +59,20 @@
                 </p>
                 <form class="auth-login-form mt-2" action="" method="POST">
                     <div class="mb-1">
+                        <label class="form-label" for="first_name">نام</label>
+                        <input class="form-control" id="first_name" type="text" name="first_name" autocomplete="off" placeholder="rasool" aria-describedby="first_name" autofocus="" tabindex="1" />
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label" for="last_name">نام خانوادگی</label>
+                        <input class="form-control" id="last_name" type="text" name="last_name" autocomplete="off" placeholder="abdi" aria-describedby="last_name" autofocus="" tabindex="1" />
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label" for="username">نام کاربری</label>
+                        <input class="form-control" id="username" type="text" name="username" autocomplete="off" placeholder="rasoolabdi" aria-describedby="username" autofocus="" tabindex="1" />
+                    </div>
+                    <div class="mb-1">
                         <label class="form-label" for="email">ایمیل</label>
-                        <input class="form-control" id="email" type="text" name="email" autocomplete="off" placeholder="text@yahoo.com" aria-describedby="email" autofocus="" tabindex="1" />
+                        <input class="form-control" id="email" type="text" name="email" autocomplete="off" placeholder="rasool@yahoo.com" aria-describedby="email" autofocus="" tabindex="1" />
                     </div>
                     <div class="mb-1">
                         <div class="d-flex justify-content-between">
