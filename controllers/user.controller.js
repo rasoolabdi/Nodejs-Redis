@@ -42,7 +42,7 @@ class UserController extends BaseController {
 
     async #loginValidation(req) {
         await body("email").not().isEmpty().withMessage("err1").isEmail().withMessage("err2").run(req);
-        await body("password").not().isEmpty().withMessage("err3").run(req);
+        await body("password").not().isEmpty().withMessage("err3").isLength({min: 8}).withMessage("err4").run(req);
         return validationResult(req);
     }
 

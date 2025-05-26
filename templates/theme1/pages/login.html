@@ -20,6 +20,9 @@
                     {% AlertDanger "err3" %} 
                         {{ t("user.login_not_empty_password")}}
                     {% endAlertDanger %}
+                    {% AlertDanger "err4" %}
+                        {{ t("user.login_min_password")}}
+                    {% endAlertDanger %}
                     {% AlertDanger "login-error" %} 
                         {{ t("user.login_error") }}
                     {% endAlertDanger %}

@@ -4,6 +4,7 @@ export default {
     "login_not_empty_email": "لطفا ایمیل را وارد نمایید",
     "login_valid_email": "لطفا ایمیل معتبر وارد نمایید",
     "login_not_empty_password": "لطفا کلمه عبور را وارد نمایید",
+    "login_min_password": "کلمه عبور حداقل باید 8 کاراکتر باشد",
     "login_error": "ایمیل یا کلمه عبور صحیح نمی باشد",
     "login_success": "ورود با موفقیت انجام شد",
     "login_no_access": "برای دسترسی به پروفایل ابتدا باید لاگین کنید",
