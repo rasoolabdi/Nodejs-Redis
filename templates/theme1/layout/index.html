@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html class="loading semi-dark-layout" lang="fa" data-layout="semi-dark-layout" dir="rtl" data-textdirection="rtl">
 <head>
+    <base href="{{ APP_URL }}" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
@@ -34,7 +35,7 @@
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
-                        <a class="dropdown-item" href=""><i class="me-50" data-feather="user"></i>پروفایل</a>
+                        <a class="dropdown-item" href="{{ APP_URL }}profile-user"><i class="me-50" data-feather="user"></i>پروفایل</a>
                         <a class="dropdown-item" href=""><i class="me-50" data-feather="power"></i>خروج</a>
                     </div>
                 </li>
@@ -57,7 +58,7 @@
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class=" nav-item"><a class="d-flex align-items-center" href=""><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">داشبورد</span></a>
                     <ul class="menu-content">
-                        <li><a class="d-flex align-items-center" href=""><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">پروفایل</span></a>
+                        <li><a class="d-flex align-items-center" href="{{ APP_URL }}profile-user"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">پروفایل</span></a>
                         </li>
                     </ul>
                 </li>
@@ -81,7 +82,7 @@
                     <div class="col-12">
                         <div class="alert alert-primary" role="alert">
                             <div class="alert-body">
-                                <strong>خوش آمدید</strong>
+                                <strong>{{ title }}</strong>
                                 {% block content %}{% endblock %}
                             </div>
                         </div>

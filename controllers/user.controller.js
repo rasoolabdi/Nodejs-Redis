@@ -21,7 +21,10 @@ class UserController extends BaseController {
 
     async index(req , res , next) {
         try {
-            return res.render("layout/index.html");
+            const data = {
+                title: "خوش امدید به پروفایل خودتون"
+            }
+            return res.render("layout/index.html" , data);
         }
         catch(error) {
             next(error)
@@ -128,6 +131,27 @@ class UserController extends BaseController {
         }
         catch(e) {
             next(e);
+        }
+    }
+
+    async profile(req , res , next) {
+        try {
+            const data = {
+                title: "اطلاعات کاربر"
+            }
+            return res.render("pages/profile.html" , data)
+        }
+        catch(error) {
+            next(error)
+        }
+    };
+
+    async postProfile(req , res , next) {
+        try {
+
+        }
+        catch(error) {
+            next(error)
         }
     }
 
