@@ -14,20 +14,30 @@
                             <th>نام</th>
                             <th>نام خانوادگی</th>
                             <th>نام کاربری</th>
-                            <th>کلمه عبور</th>
+                            <th>ایمیل</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>
-                                <span class="fw-bold">rasool</span>
-                            </td>
-                            <td>abdi</td>
-                            <td>
-                                rasoolabdi
+                                <span class="fw-bold">
+                                    {{ formData.firstName }}
+                                </span>
                             </td>
                             <td>
-                                rasool@yahoo.com                                
+                                <span class="fw-bold">
+                                    {{ formData.lastName }}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="fw-bold">
+                                    {{ formData.userName }}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="fw-bold">
+                                    {{ formData.email }}                      
+                                </span>
                             </td>
                         </tr>
                     </tbody>

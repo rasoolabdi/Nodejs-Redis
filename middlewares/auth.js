@@ -24,7 +24,7 @@ class AuthMiddleware extends BaseMiddleware {
     async isAuth(req,res,next) {
         try {
             if(req?.session?.admin_id) {
-                return res.redirect(`${process.env.APP_URL}profile`)
+                return res.redirect(`${process.env.APP_URL}`)
             }
             else {
                 return next();

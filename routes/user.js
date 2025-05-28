@@ -7,7 +7,6 @@ const userRouters = Router();
 userRouters.get("/home" , userController.home);
 userRouters.get("/" , new AuthMiddleware().needAuth , userController.index);
 userRouters.get("/profile-user" , userController.profile);
-userRouters.post("profile-user" , new AuthMiddleware().isAuth , userController.postProfile);
 userRouters.get("/login", new AuthMiddleware().isAuth ,userController.login);
 userRouters.post("/login" , new AuthMiddleware().isAuth , userController.postLogin);
 userRouters.get("/register" , new AuthMiddleware().isAuth , userController.register);

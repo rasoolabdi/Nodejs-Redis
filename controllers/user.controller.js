@@ -22,7 +22,8 @@ class UserController extends BaseController {
     async index(req , res , next) {
         try {
             const data = {
-                title: "خوش امدید به پروفایل خودتون"
+                title: "خوش امدید به پروفایل خودتون",
+                "formData": req.session.admin_info
             }
             return res.render("layout/index.html" , data);
         }
@@ -62,7 +63,7 @@ class UserController extends BaseController {
             if(user?.id && user.password === password) {
                 req.session.admin_id = user?.id;
                 req.session.admin_info = user;
-                return res.redirect(`/profile?msg=login-success`)
+                return res.redirect(`/?msg=login-success`)
             }
             else {
                 return res.redirect(`/login?msg=login-error`)
@@ -102,7 +103,7 @@ class UserController extends BaseController {
                 return res.redirect(`/register?msg=${result?.errors[0]?.msg}`)
             }
             const firstName = super.input(req.body.first_name);
-            const lastName = super.input(req.body.lastName);
+            const lastName = super.input(req.body.last_name);
             const userName = super.input(req.body.username);
             const email = super.input(req.body.email);
             const password1 = super.input(req.body.password1);
@@ -137,7 +138,8 @@ class UserController extends BaseController {
     async profile(req , res , next) {
         try {
             const data = {
-                title: "اطلاعات کاربر"
+                title: "اطلاعات کاربر",
+                "formData": req.session.admin_info
             }
             return res.render("pages/profile.html" , data)
         }
@@ -145,15 +147,6 @@ class UserController extends BaseController {
             next(error)
         }
     };
-
-    async postProfile(req , res , next) {
-        try {
-
-        }
-        catch(error) {
-            next(error)
-        }
-    }
 
     async recovery(req , res , next) {
         try {
