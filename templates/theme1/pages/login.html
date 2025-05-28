@@ -18,19 +18,22 @@
                         {{ t("user.login_valid_email") }}
                     {% endAlertDanger %}
                     {% AlertDanger "err3" %} 
-                        {{ t("user.login_not_empty_password")}}
+                        {{ t("user.login_not_empty_password") }}
                     {% endAlertDanger %}
                     {% AlertDanger "err4" %}
-                        {{ t("user.login_min_password")}}
+                        {{ t("user.login_min_password") }}
                     {% endAlertDanger %}
                     {% AlertDanger "login-error" %} 
                         {{ t("user.login_error") }}
                     {% endAlertDanger %}
                     {% AlertDanger "no-access" %} 
-                        {{ t('user.login_no_access')}}
+                        {{ t('user.login_no_access') }}
                     {% endAlertDanger %}
                     {% AlertSuccess "login-success" %}
-                        {{ t("user.login_success")}}
+                        {{ t("user.login_success") }}
+                    {% endAlertSuccess %}
+                    {% AlertSuccess "logout-success" %}
+                        {{ t("user.login_logout_success") }}
                     {% endAlertSuccess %}
                 </p>
                 <form class="auth-login-form mt-2" action="" method="POST">

@@ -13,5 +13,6 @@ userRouters.get("/register" , new AuthMiddleware().isAuth , userController.regis
 userRouters.post("/register" , new AuthMiddleware().isAuth ,userController.postRegister);
 userRouters.get("/recovery" , userController.recovery);
 userRouters.post("/recovery" , userController.postRecovery);
+userRouters.get("/logout" , userController.logout);
 
 export default userRouters;

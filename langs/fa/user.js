@@ -8,6 +8,7 @@ export default {
     "login_error": "ایمیل یا کلمه عبور صحیح نمی باشد",
     "login_success": "ورود با موفقیت انجام شد",
     "login_no_access": "برای دسترسی به پروفایل ابتدا باید لاگین کنید",
+    "login_logout_success": "خروج با موفقیت انجام شد",
 
     //register
     "register_first_name_not_empty": "لطفا نام را وارد نمایید",

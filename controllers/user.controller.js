@@ -201,5 +201,17 @@ class UserController extends BaseController {
         }
     }
 
+    async logout(req , res , next) {
+        try {
+            delete req.session.admin_id;
+            delete req.session.admin_info;
+            req.session.destroy();
+            return res.redirect(`/login?msg=logout-success`)
+        }
+        catch(error){
+            next(error)
+        }
+    }
+
 };
 export default new UserController();
