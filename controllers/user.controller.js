@@ -12,7 +12,10 @@ class UserController extends BaseController {
 
     async home(req , res , next) {
         try {
-            return res.render("pages/home.html")
+            const data = {
+                "formData": req.session.admin_info
+            }
+            return res.render("pages/home.html" , data)
         }
         catch(error) {
             next(error);
