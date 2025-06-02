@@ -12,7 +12,6 @@
 
 - http://localhost:5000/
 - http://localhost:5000/home
-- http://localhost:5000/profile
 - http://localhost:5000/register
 - http://localhost:5000/login
 - http://localhost:5000/recovery
